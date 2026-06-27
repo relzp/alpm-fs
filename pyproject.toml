@@ -2,4 +2,6 @@
 name = "alpm-fs"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pyalpm>=0.10.12",
+]
