@@ -1,0 +1,20 @@
+version = 1
+revision = 3
+requires-python = ">=3.12"
+
+[[package]]
+name = "alpm-fs"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "pyalpm" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pyalpm", specifier = ">=0.10.12" }]
+
+[[package]]
+name = "pyalpm"
+version = "0.10.12"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fa/33/fb965c94a703b2f62741a52911446fe85e7effc677d54d1a8cd0033f4848/pyalpm-0.10.12.tar.gz", hash = "sha256:8c6cb4bbba819f99fe6c2547f25a861f68905d96729caf1ea15ba6c43d4f1127", size = 52295, upload-time = "2025-05-27T10:33:58.208Z" }
