@@ -5,7 +5,7 @@ from pyalpm import Handle
 
 
 def main():
-    # handle command line args
+    # Handle command line args
     parser = argparse.ArgumentParser()
     parser.add_argument("root", help="folder to create hierarchy under")
     args = parser.parse_args()
@@ -23,13 +23,13 @@ def main():
 
     logging.debug("creating hierarchy under: {}".format(root))
 
-    # open local db
+    # Open local db
     handle = Handle("/", "/var/lib/pacman")
     local_db = handle.get_localdb()
 
-    # get installed pkgs in local db
+    # Get installed pkgs in local db
     pkgs = local_db.pkgcache
-    # create hierarchy of symlinks for each package
+    # Create hierarchy of symlinks for each package
     for pkg in pkgs:
         name = pkg.name
         logging.debug("creating hierarchy for package {}".format(name))
@@ -37,7 +37,7 @@ def main():
         os.chdir(name)
 
         files = sorted(pkg.files)
-        # filter file list to only entries not a prefix of another entry
+        # Filter file list to only entries not a prefix of another entry
         files_no_prefixes = []
         for idx, (path, size, mode) in enumerate(files):
             if idx + 1 < len(files):
@@ -47,10 +47,10 @@ def main():
             path = path.removesuffix("/")
             files_no_prefixes.append(path)
 
-        # iterate through filtered files
+        # Iterate through filtered files
         for path in files_no_prefixes:
             logging.debug("processing file {}".format(path))
-            # make parent dir, if any
+            # Make parent dir, if any
             path_dir = os.path.dirname(path)
             if path_dir:
                 logging.debug("making dir {}".format(path_dir))
